@@ -141,7 +141,7 @@ This project leverages a **multi-step LangGraph workflow** to generate and valid
 4. **Reflection**: If the answer is invalid, a reflection mechanism re-evaluates and improves the answer, respecting a maximum retry count.
 5. **Workflow Engine**: LangGraph powers the execution flow using `StateGraph`, allowing conditional edge transitions between nodes.
 
-![LangGraph Workflow](image-1.png)
+![LangGraph Workflow](image.png)
 ---
 
 ## ⚠️ Known Limitations / Trade-Offs
