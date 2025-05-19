@@ -157,13 +157,7 @@ class LangGraphClass:
         """Retrieve relevant documents for the given question and update context."""
         state['iterations'] = 0
         docs = self.retriever.get_relevant_documents(state["question"])
-        print('-'*100)
-        print("1. retrieve_context")
-        print(docs)
-
         state["context"] = "\n\n".join([doc.page_content for doc in docs])
-        print(state["context"])
-        print('-'*100)
         return state
 
     def generate_answer(self, state: GraphState) -> GraphState:
@@ -177,10 +171,6 @@ class LangGraphClass:
             "question": state["question"],
             "history": history,
         }).content
-        print('-'*100)
-        print("2. generate_answer")
-        print(state["answer"])
-        print('-'*100)
         return state
 
     def check_answer(self, state: GraphState) -> GraphState:
@@ -190,12 +180,7 @@ class LangGraphClass:
             "context": state["context"],
             "answer": state["answer"]
         })
-        print('-'*100)
-        print("3. check_answer: ", state['iterations'])
-        print(response.decision)
-        print('-'*100)
         state["answer_validity"] = response.decision
-        print('-'*100)
         return state
 
     def decide_to_finish(self, state: GraphState) -> str:
@@ -205,9 +190,6 @@ class LangGraphClass:
         Returns:
             str: "end" to terminate or "reflect" to retry with improved answer.
         """
-        print('-'*100)
-        print("4. decide_to_finish: ")
-        print('-'*100)
         if state["answer_validity"] == 'Y':
             return "end"
         if state["iterations"] > self.settings.MAX_ITERATIONS:
@@ -224,11 +206,6 @@ class LangGraphClass:
             "context": state["context"],
             "answer": state["answer"]
         })
-        print('-'*100)
-        print("5. reflect_and_retry: ")
-        print(improved_answer.content)
-        print("iterations:", state['iterations'])
-        print('-'*100)
         state["answer"] = improved_answer.content
         return state
 

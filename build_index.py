@@ -1,3 +1,4 @@
+"""Build and save the FAISS vector index from the dataset."""
 from graph import LangGraphClass
 from config import settings
 
