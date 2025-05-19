@@ -42,7 +42,7 @@ Or make sure it’s properly handled by your `config.py`.
 
 ## ⚙️ Execution Instructions
 
-### 1. Vector Store
+### 1. Vector Store (Optional)
 
 A prebuilt FAISS index already exists in the repository under `faiss_index/`.  
 To rebuild the index from a CSV dataset (e.g., `data/rag_dataset.csv`), run:
