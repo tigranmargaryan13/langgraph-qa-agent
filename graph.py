@@ -144,7 +144,6 @@ class LangGraphClass:
             Document(page_content=f"Q: {row['question']}\nA: {row['answer']}")
             for _, row in df.iterrows()
         ]
-        docs = docs[:10]
         print("Number of documents:", len(docs))
 
         if not docs:
